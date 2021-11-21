@@ -4,7 +4,7 @@ on:
     schedule:
         - cron: '0 0/6 * * *'
 jobs:
-    odgd:
+    od:
         name: OneDrive to Google Drive Sync
         runs-on: ubuntu-latest
         steps:
@@ -20,10 +20,10 @@ jobs:
         - name: Copy
           run: |
               # Start Mission 
-              bash copy.sh
+              bash onecopy.sh
 
-    cdni:
-        name: Games CDN
+    omg:
+        name: gdomg to black
         runs-on: ubuntu-latest
         steps:
         - name: checkout
@@ -38,9 +38,9 @@ jobs:
         - name: Copy
           run: |
               # Start Mission 
-              bash gamecdn.sh
-    emby:
-        name: Emby Google Drive to Google Drive Sync
+              bash gdomgcopy.sh
+    ali:
+        name: aliyun to Google Drive Sync
         runs-on: ubuntu-latest
         steps:
         - name: checkout
@@ -55,25 +55,8 @@ jobs:
         - name: Copy
           run: |
               # Start Mission 
-              bash gdcopy.sh
-    tjod:
-        name: OneDrive to Google Drive Sync
-        runs-on: ubuntu-latest
-        steps:
-        - name: checkout
-          uses: actions/checkout@master
-        - name: Download and Install rclone
-          run: sudo curl https://rclone.org/install.sh | sudo bash
-        - name: Decrypt config
-          run: |
-              bash decrypt.sh
-          env:
-              GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE}}
-        - name: Copy
-          run: |
-              # Start Mission 
-              bash tjcopy.sh
-    backup:
+              bash aliyuncopy.sh
+    whole:
         name: WholeBackup
         runs-on: ubuntu-latest
         steps:
@@ -86,12 +69,12 @@ jobs:
               bash decrypt.sh
           env:
               GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE}}
-        - name: Backup
+        - name: Copy
           run: |
               # Start Mission 
               bash wholebackup.sh
-    edubcp:
-        name: Full Backup to EDU
+    another:
+        name: another WholeBackup
         runs-on: ubuntu-latest
         steps:
         - name: checkout
@@ -106,4 +89,5 @@ jobs:
         - name: Backup
           run: |
               # Start Mission 
-              bash eduwhole.sh 
+              bash anotherbackup.sh
+  
